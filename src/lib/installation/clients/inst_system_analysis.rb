@@ -324,7 +324,9 @@ module Yast
       end
 
       # reregister callbacks
-      PackageCallbacks.RestorePreviousProgressCallbacks
+      # RestorePreviousProgressCallbacks call should be better here, but it does not
+      # work properly when another code has set different (default) callbacks in the meantime.
+      PackageCallbacks.SetProgressReportCallbacks
 
       ret
     end
